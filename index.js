@@ -47,6 +47,9 @@ const company = require('./company.js');
 app.get('/company', company.listCompanies);
 app.get('/company/:id', company.specificCompany);
 
+const search = require('./search.js');
+app.get('/search', search.specificJob);
+
 const job = require('./job.js');
 app.get('/job/:id', job.printJob);
 
