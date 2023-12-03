@@ -21,6 +21,9 @@
 					<% const fmt = new Intl.NumberFormat("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2}); %>
 					<%= fmt.format(jobs.rows[i].salary_min) + " - " + fmt.format(jobs.rows[i].salary_max) %>
 				</th>
+				<th>
+					<a href="/apply/<%= jobs.rows[i].jobid %>" > Apply </a>
+				</th>
 			</tr>
 			<tr>
 				<td colspan="3">

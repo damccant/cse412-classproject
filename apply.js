@@ -7,7 +7,7 @@ async function jobApply(request, response) {
 	const curUser = login.getLoggedUser(request.cookies.session);
 	let title = "Not Logged In or Already Applied";
 
-	if(curUser != undefined){
+	if(curUser !== undefined){
 		const count = await pool.query('SELECT Count(*) FROM Application WHERE jobId = $2 AND userId = $1', [curUser, jobID]);
 
 		if(count.rows.at(0).count == 0){
