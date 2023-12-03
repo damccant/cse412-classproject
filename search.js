@@ -8,7 +8,7 @@ async function specificJob(request, response) {
 	    const jobs = await pool.query('SELECT * FROM JobPosting LIMIT 50;');
 	    response.render("search", {jobs});
 	}else{
-		const jobs = await pool.query('SELECT * FROM JobPosting WHERE title LIKE $1', [name]);
+		const jobs = await pool.query("SELECT * FROM JobPosting WHERE title LIKE $1;", [name]);
         response.render("search", {jobs});
     }
 }

@@ -53,6 +53,9 @@ app.get('/search', search.specificJob);
 const job = require('./job.js');
 app.get('/job/:id', job.printJob);
 
+const apply = require('./apply.js');
+app.get('/apply/:id', apply.jobApply);
+
 app.listen(port, () => {
 	console.log('Listening on port ' + port);
 })

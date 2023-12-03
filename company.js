@@ -1,4 +1,7 @@
 const pool = require('./pool').pool;
+const cookieParser = require('cookie-parser');
+
+const login = require('./login.js');
 
 async function listCompanies(request, response) {
 	const result = await pool.query('SELECT * FROM Company');
