@@ -48,16 +48,21 @@ async function deleteUser(username) {
 
 async function createUser(username, password, education, jobExp, resume) {
 	var hashed_pass = md5(password);
-	const result = await pool.query('INSERT INTO UserApplicant(userId, hashed_pass) VALUES ($1, $2);', [username, hashed_pass]);
-	if(result.rowCount < 1)
+	try {
+		const result = await pool.query('INSERT INTO UserApplicant(userId, hashed_pass) VALUES ($1, $2);', [username, hashed_pass]);
+		if(result.rowCount < 1)
+			return false;
+		if(education !== undefined)
+			changeEducation(username, education);
+		if(jobExp !== undefined)
+			changeJobExp(username, jobExp);
+		if(resume !== undefined)
+			changeResume(username, resume);
+		return true;
+	} catch (error) {
+		console.log(error);
 		return false;
-	if(education !== undefined)
-		changeEducation(username, education);
-	if(jobExp !== undefined)
-		changeJobExp(username, jobExp);
-	if(resume !== undefined)
-		changeResume(username, resume);
-	return true;
+	}
 }
 
 module.exports = {
