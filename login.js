@@ -54,6 +54,7 @@ async function doLogin(request, response) {
 		response.cookie('session', newSession);
 		console.log(sessions.map);
 	}
+
 	if(request.body.redir_url !== undefined) {
 		console.log("Redirecting to " + request.body.redir_url);
 		response.redirect(request.body.redir_url);

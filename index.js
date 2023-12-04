@@ -56,6 +56,11 @@ app.get('/job/:id', job.printJob);
 const apply = require('./apply.js');
 app.get('/apply/:id', apply.jobApply);
 
+const user = require('./change.js');
+app.get('/change_pass', user.changePassword);
+app.get('/update_user', user.changeUser);
+
+
 app.listen(port, () => {
 	console.log('Listening on port ' + port);
 })
